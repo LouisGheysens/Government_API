@@ -1,3 +1,5 @@
+using Business.Interfaces;
+using Business.Services;
 using Helpers;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +13,11 @@ builder.Services.AddSwaggerGen();
 
 //Inject db
 builder.Services.Configure<DbSettings>(builder.Configuration.GetSection("MongoDB"));
+//Inject multiple classes to one service
+builder.Services.AddScoped(typeof(IService<PersonService, string>), typeof(PersonService));
+builder.Services.AddScoped(typeof(IService<CompanyService, string>), typeof(CompanyService));
+builder.Services.AddScoped(typeof(IService<AnimalService, string>), typeof(AnimalService));
+builder.Services.AddScoped(typeof(IService<CountryService, string>), typeof(CountryService));
 
 var app = builder.Build();
 
