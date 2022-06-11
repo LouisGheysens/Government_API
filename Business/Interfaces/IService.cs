@@ -5,8 +5,8 @@
     {
         Task<IEnumerable<T>> GetAllAsync();
         Task<T> GetAsync(U id);
-        Task<U> AddAsync(T item);
-        Task<U> UpdateAsync(U id, T data);
-        Task<U> DeleteAsync(U id);
+        Task AddAsync(T item);
+        Task UpdateAsync(U id, T data);
+        Task DeleteAsync(U id);
     }
 }
