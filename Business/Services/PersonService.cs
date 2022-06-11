@@ -31,12 +31,14 @@ namespace Business.Services
 
         public async Task<IEnumerable<Person>> GetAllAsync()
         {
-            return await _personCollection.Find(_ => true).ToListAsync();
+            var persons = await _personCollection.Find(_ => true).ToListAsync();
+            return persons;
         }
 
         public async Task<Person> GetAsync(string id)
         {
-            return await _personCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
+            var person = await _personCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
+            return person;
         }
 
         public async Task UpdateAsync(string id, Person data)

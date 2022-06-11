@@ -19,6 +19,7 @@ namespace API.Controllers
         public async Task<IActionResult> GetAll()
         {
             var result = await _animalService.GetAllAsync();
+
             return Ok(result);
         }
 

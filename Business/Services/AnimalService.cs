@@ -31,12 +31,14 @@ namespace Business.Services
 
         public async Task<IEnumerable<Animal>> GetAllAsync()
         {
-           return await _animalCollection.Find(_ => true).ToListAsync();
+           var animals = await _animalCollection.Find(_ => true).ToListAsync();
+           return animals;
         }
 
         public async Task<Animal> GetAsync(string id)
         {
-            return await _animalCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
+            var animal = await _animalCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
+            return animal;
         }
 
         public async Task UpdateAsync(string id, Animal data)
